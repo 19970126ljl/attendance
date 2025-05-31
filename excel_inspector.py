@@ -1,5 +1,6 @@
 import openpyxl
 import os
+import argparse
 
 def inspect_excel_file(file_path):
     print(f"\n--- Inspecting: {file_path} ---")
@@ -45,9 +46,8 @@ def inspect_excel_file(file_path):
         print(f"Error inspecting {file_path}: {e}")
 
 if __name__ == "__main__":
-    current_directory = os.getcwd()
-    file1 = os.path.join(current_directory, "2025年5月考勤.xlsx")
-    file2 = os.path.join(current_directory, "上下班打卡_月报_20250501-20250526.xlsx")
+    parser = argparse.ArgumentParser(description="Inspect Excel files")
+    parser.add_argument("file_path", help="Path to the Excel file to inspect")
+    args = parser.parse_args()
 
-    inspect_excel_file(file1)
-    inspect_excel_file(file2)
+    inspect_excel_file(args.file_path)

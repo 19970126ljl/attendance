@@ -1,5 +1,6 @@
 import openpyxl
 import os
+import argparse
 
 def fill_attendance_data(target_file, source_file, target_sheet_name, source_sheet_name):
     print(f"--- Starting data transfer ---")
@@ -172,11 +173,11 @@ def fill_attendance_data(target_file, source_file, target_sheet_name, source_she
         print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    current_directory = os.getcwd()
-    target_excel_file = os.path.join(current_directory, "2025年5月考勤.xlsx")
-    source_excel_file = os.path.join(current_directory, "上下班打卡_月报_20250501-20250526.xlsx")
+    parser = argparse.ArgumentParser(description="Fill attendance data from source to target Excel file")
+    parser.add_argument("target_file", help="Path to the target Excel file (attendance sheet)")
+    parser.add_argument("source_file", help="Path to the source Excel file (monthly report)")
+    parser.add_argument("target_sheet_name", help="Name of the target sheet")
+    parser.add_argument("source_sheet_name", help="Name of the source sheet")
+    args = parser.parse_args()
 
-    target_sheet = '25年4月考勤（4.1-4.30）'
-    source_sheet = '上下班打卡_月报'
-
-    fill_attendance_data(target_excel_file, source_excel_file, target_sheet, source_sheet)
+    fill_attendance_data(args.target_file, args.source_file, args.target_sheet_name, args.source_sheet_name)

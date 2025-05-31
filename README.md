@@ -16,8 +16,6 @@
 ## 代码结构
 ```
 .
-├── 2025年5月考勤.xlsx             # 示例目标考勤文件
-├── 上下班打卡_月报_20250501-20250526.xlsx # 示例源打卡月报文件
 ├── excel_inspector.py           # Excel 文件检查脚本
 ├── fill_attendance.py           # 考勤数据填充脚本
 └── README.md                    # 项目说明文件
@@ -44,19 +42,19 @@
 
 ## 使用方法
 
-1.  **准备 Excel 文件**: 确保您的目标考勤文件和源打卡月报文件存在于脚本可访问的路径。默认情况下，脚本会查找当前目录下的 `2025年5月考勤.xlsx` 和 `上下班打卡_月报_20250501-20250526.xlsx`。
+1.  **准备 Excel 文件**: 确保您的目标考勤文件和源打卡月报文件存在于脚本可访问的路径。
 
 2.  **运行 `excel_inspector.py`**:
     ```bash
-    python excel_inspector.py
+    python excel_inspector.py <file_path>
     ```
-    此命令将检查默认的两个 Excel 文件并打印相关信息。
+    此命令将检查指定的 Excel 文件并打印相关信息. Replace <file_path> with the path to the Excel file you want to inspect.
 
 3.  **运行 `fill_attendance.py`**:
     ```bash
-    python fill_attendance.py
+    python fill_attendance.py <target_file> <source_file> <target_sheet_name> <source_sheet_name>
     ```
-    此命令将从源文件 (`上下班打卡_月报_20250501-20250526.xlsx` 的 '上下班打卡_月报' 工作表) 读取数据，并填充到目标文件 (`2025年5月考勤.xlsx` 的 '25年4月考勤（4.1-4.30）' 工作表) 中。
+    此命令将从源文件读取数据，并填充到目标文件中. Replace <target_file>, <source_file>, <target_sheet_name>, and <source_sheet_name> with the appropriate values.
 
 ## 如何扩展
 
